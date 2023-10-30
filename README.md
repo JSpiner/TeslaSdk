@@ -1,9 +1,11 @@
 # TeslaSdk
+[![PyPI version](https://badge.fury.io/py/teslasdk.svg)](https://badge.fury.io/py/teslasdk)
+
 This is an unofficial project that implements the official Tesla SDK into multiple languages/platforms.
 
 | Language/Platform | http api | ble api | docs |
 | -- | -- | -- | -- |
-| python | in progress | ❌ | [docs](./python/README.md) |
+| python | in progress | ✅ | [docs](./python/README.md) |
 | js | planning | ❌ | |
 | kotlin / Android | planning | planning | |
 | swift / iOS | need contribute | need contribute | |
