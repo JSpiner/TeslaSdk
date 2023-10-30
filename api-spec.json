@@ -1,0 +1,1592 @@
+{
+    "Charging Endpoints": {
+        "charging_history": {
+            "function": "charging_history",
+            "endpoint": "GET /api/1/dx/charging/history",
+            "scopes": "vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "vin",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "startTime",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "endTime",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "pageNo",
+                    "in": "query",
+                    "type": "integer",
+                    "required": "No"
+                },
+                {
+                    "name": "pageSize",
+                    "in": "query",
+                    "type": "integer",
+                    "required": "No"
+                },
+                {
+                    "name": "sortBy",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "sortOrder",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                }
+            ]
+        },
+        "charging_sessions (only for business fleet owners)": {
+            "function": "charging_sessions (only for business fleet owners)",
+            "endpoint": "GET /api/1/dx/charging/sessions",
+            "scopes": "",
+            "parameters": [
+                {
+                    "name": "vin",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "date_from",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "date_to",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "limit",
+                    "in": "query",
+                    "type": "integer",
+                    "required": "No"
+                },
+                {
+                    "name": "offset",
+                    "in": "query",
+                    "type": "integer",
+                    "required": "No"
+                }
+            ]
+        }
+    },
+    "Partner Endpoints": {
+        "public_key": {
+            "function": "public_key",
+            "endpoint": "GET /api/1/partner_accounts/public_key",
+            "scopes": "",
+            "parameters": [
+                {
+                    "name": "domain",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                }
+            ]
+        },
+        "register": {
+            "function": "register",
+            "endpoint": "POST /api/1/partner_accounts",
+            "scopes": "",
+            "parameters": [
+                {
+                    "name": "domain",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        }
+    },
+    "User Endpoints": {
+        "backup_key": {
+            "function": "backup_key",
+            "endpoint": "GET /api/1/users/backup_key",
+            "scopes": "user_data"
+        },
+        "feature_config": {
+            "function": "feature_config",
+            "endpoint": "GET /api/1/users/feature_config",
+            "scopes": "user_data"
+        },
+        "me": {
+            "function": "me",
+            "endpoint": "GET /api/1/users/me",
+            "scopes": "user_data"
+        },
+        "orders": {
+            "function": "orders",
+            "endpoint": "GET /api/1/users/orders",
+            "scopes": ""
+        },
+        "region": {
+            "function": "region",
+            "endpoint": "GET /api/1/users/region",
+            "scopes": "user_data"
+        }
+    },
+    "Vehicle Commands": {
+        "actuate_trunk": {
+            "function": "actuate_trunk",
+            "endpoint": "POST /api/1/vehicles/{id}/command/actuate_trunk",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "which_trunk",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "adjust_volume": {
+            "function": "adjust_volume",
+            "endpoint": "POST /api/1/vehicles/{id}/command/adjust_volume",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "volume",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "auto_conditioning_start": {
+            "function": "auto_conditioning_start",
+            "endpoint": "POST /api/1/vehicles/{id}/command/auto_conditioning_start",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "auto_conditioning_stop": {
+            "function": "auto_conditioning_stop",
+            "endpoint": "POST /api/1/vehicles/{id}/command/auto_conditioning_stop",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "cancel_software_update": {
+            "function": "cancel_software_update",
+            "endpoint": "POST /api/1/vehicles/{id}/command/cancel_software_update",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "charge_max_range": {
+            "function": "charge_max_range",
+            "endpoint": "POST /api/1/vehicles/{id}/command/charge_max_range",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "charge_port_door_close": {
+            "function": "charge_port_door_close",
+            "endpoint": "POST /api/1/vehicles/{id}/command/charge_port_door_close",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "charge_port_door_open": {
+            "function": "charge_port_door_open",
+            "endpoint": "POST /api/1/vehicles/{id}/command/charge_port_door_open",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "charge_standard": {
+            "function": "charge_standard",
+            "endpoint": "POST /api/1/vehicles/{id}/command/charge_standard",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "charge_start": {
+            "function": "charge_start",
+            "endpoint": "POST /api/1/vehicles/{id}/command/charge_start",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "charge_stop": {
+            "function": "charge_stop",
+            "endpoint": "POST /api/1/vehicles/{id}/command/charge_stop",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "door_lock": {
+            "function": "door_lock",
+            "endpoint": "POST /api/1/vehicles/{id}/command/door_lock",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "door_unlock": {
+            "function": "door_unlock",
+            "endpoint": "POST /api/1/vehicles/{id}/command/door_unlock",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "erase_user_data": {
+            "function": "erase_user_data",
+            "endpoint": "POST /api/1/vehicles/{id}/command/erase_user_data",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "flash_lights": {
+            "function": "flash_lights",
+            "endpoint": "POST /api/1/vehicles/{id}/command/flash_lights",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "guest_mode": {
+            "function": "guest_mode",
+            "endpoint": "POST /api/1/vehicles/{id}/command/guest_mode",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "enable",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "honk_horn": {
+            "function": "honk_horn",
+            "endpoint": "POST /api/1/vehicles/{id}/command/honk_horn",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "media_next_fav": {
+            "function": "media_next_fav",
+            "endpoint": "POST /api/1/vehicles/{id}/command/media_next_fav",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "media_next_track": {
+            "function": "media_next_track",
+            "endpoint": "POST /api/1/vehicles/{id}/command/media_next_track",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "media_prev_fav": {
+            "function": "media_prev_fav",
+            "endpoint": "POST /api/1/vehicles/{id}/command/media_prev_fav",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "media_prev_track": {
+            "function": "media_prev_track",
+            "endpoint": "POST /api/1/vehicles/{id}/command/media_prev_track",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "media_toggle_playback": {
+            "function": "media_toggle_playback",
+            "endpoint": "POST /api/1/vehicles/{id}/command/media_toggle_playback",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "media_volume_down": {
+            "function": "media_volume_down",
+            "endpoint": "POST /api/1/vehicles/{id}/command/media_volume_down",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "navigation_gps_request": {
+            "function": "navigation_gps_request",
+            "endpoint": "POST /api/1/vehicles/{id}/command/navigation_gps_request",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "lat",
+                    "in": "body",
+                    "type": "Unknown",
+                    "required": "Yes"
+                },
+                {
+                    "name": "lon",
+                    "in": "body",
+                    "type": "Unknown",
+                    "required": "Yes"
+                },
+                {
+                    "name": "order",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "navigation_request": {
+            "function": "navigation_request",
+            "endpoint": "POST /api/1/vehicles/{id}/command/navigation_request",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "type",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                },
+                {
+                    "name": "value",
+                    "in": "body",
+                    "type": "Unknown",
+                    "required": "Yes"
+                },
+                {
+                    "name": "locale",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                },
+                {
+                    "name": "timestamp_ms",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "navigation_sc_request": {
+            "function": "navigation_sc_request",
+            "endpoint": "POST /api/1/vehicles/{id}/command/navigation_sc_request",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "id",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "order",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "remote_auto_seat_climate_request": {
+            "function": "remote_auto_seat_climate_request",
+            "endpoint": "POST /api/1/vehicles/{id}/command/remote_auto_seat_climate_request",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "auto_seat_position",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "auto_climate_on",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "remote_auto_steering_wheel_heat_climate_request": {
+            "function": "remote_auto_steering_wheel_heat_climate_request",
+            "endpoint": "POST /api/1/vehicles/{id}/command/remote_auto_steering_wheel_heat_climate_request",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "on",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "remote_boombox": {
+            "function": "remote_boombox",
+            "endpoint": "POST /api/1/vehicles/{id}/command/remote_boombox",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "sound",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "remote_seat_cooler_request": {
+            "function": "remote_seat_cooler_request",
+            "endpoint": "POST /api/1/vehicles/{id}/command/remote_seat_cooler_request",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "seat_position",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "seat_cooler_level",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "remote_seat_heater_request": {
+            "function": "remote_seat_heater_request",
+            "endpoint": "POST /api/1/vehicles/{id}/command/remote_seat_heater_request",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "remote_start_drive": {
+            "function": "remote_start_drive",
+            "endpoint": "POST /api/1/vehicles/{id}/command/remote_start_drive",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "remote_steering_wheel_heat_level_request": {
+            "function": "remote_steering_wheel_heat_level_request",
+            "endpoint": "POST /api/1/vehicles/{id}/command/remote_steering_wheel_heat_level_request",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "level",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "remote_steering_wheel_heater_request": {
+            "function": "remote_steering_wheel_heater_request",
+            "endpoint": "POST /api/1/vehicles/{id}/command/remote_steering_wheel_heater_request",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "on",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "reset_pin_to_drive_pin": {
+            "function": "reset_pin_to_drive_pin",
+            "endpoint": "POST /api/1/vehicles/{id}/command/reset_pin_to_drive_pin",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "reset_valet_pin": {
+            "function": "reset_valet_pin",
+            "endpoint": "POST /api/1/vehicles/{id}/command/reset_valet_pin",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "schedule_software_update": {
+            "function": "schedule_software_update",
+            "endpoint": "POST /api/1/vehicles/{id}/command/schedule_software_update",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "offset_sec",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_bioweapon_mode": {
+            "function": "set_bioweapon_mode",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_bioweapon_mode",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "on",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                },
+                {
+                    "name": "manual_override",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_cabin_overheat_protection": {
+            "function": "set_cabin_overheat_protection",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_cabin_overheat_protection",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "on",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                },
+                {
+                    "name": "fan_only",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_charge_limit": {
+            "function": "set_charge_limit",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_charge_limit",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "percent",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_charging_amps": {
+            "function": "set_charging_amps",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_charging_amps",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "charging_amps",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_climate_keeper_mode": {
+            "function": "set_climate_keeper_mode",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_climate_keeper_mode",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "climate_keeper_mode",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_cop_temp": {
+            "function": "set_cop_temp",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_cop_temp",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "cop_temp",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_managed_charge_current_request": {
+            "function": "set_managed_charge_current_request",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_managed_charge_current_request",
+            "scopes": "",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_managed_charger_location": {
+            "function": "set_managed_charger_location",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_managed_charger_location",
+            "scopes": "",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_managed_scheduled_charging_time": {
+            "function": "set_managed_scheduled_charging_time",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_managed_scheduled_charging_time",
+            "scopes": "",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_pin_to_drive": {
+            "function": "set_pin_to_drive",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_pin_to_drive",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "on",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                },
+                {
+                    "name": "password",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_preconditioning_max": {
+            "function": "set_preconditioning_max",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_preconditioning_max",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "on",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                },
+                {
+                    "name": "manual_override",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_scheduled_charging": {
+            "function": "set_scheduled_charging",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_scheduled_charging",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "enable",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                },
+                {
+                    "name": "time",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_scheduled_departure": {
+            "function": "set_scheduled_departure",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_scheduled_departure",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "enable",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                },
+                {
+                    "name": "time",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_sentry_mode": {
+            "function": "set_sentry_mode",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_sentry_mode",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "on",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_temps": {
+            "function": "set_temps",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_temps",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "driver_temp",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "passenger_temp",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_valet_mode": {
+            "function": "set_valet_mode",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_valet_mode",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "on",
+                    "in": "body",
+                    "type": "boolean",
+                    "required": "Yes"
+                },
+                {
+                    "name": "password",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "set_vehicle_name": {
+            "function": "set_vehicle_name",
+            "endpoint": "POST /api/1/vehicles/{id}/command/set_vehicle_name",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "vehicle_name",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "speed_limit_activate": {
+            "function": "speed_limit_activate",
+            "endpoint": "POST /api/1/vehicles/{id}/command/speed_limit_activate",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "pin",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "speed_limit_clear_pin": {
+            "function": "speed_limit_clear_pin",
+            "endpoint": "POST /api/1/vehicles/{id}/command/speed_limit_clear_pin",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "pin",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "speed_limit_deactivate": {
+            "function": "speed_limit_deactivate",
+            "endpoint": "POST /api/1/vehicles/{id}/command/speed_limit_deactivate",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "pin",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "speed_limit_set_limit": {
+            "function": "speed_limit_set_limit",
+            "endpoint": "POST /api/1/vehicles/{id}/command/speed_limit_set_limit",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "limit_mph",
+                    "in": "body",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "sun_roof_control": {
+            "function": "sun_roof_control",
+            "endpoint": "POST /api/1/vehicles/{id}/command/sun_roof_control",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "state",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "take_drivenote": {
+            "function": "take_drivenote",
+            "endpoint": "POST /api/1/vehicles/{id}/command/take_drivenote",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "note",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "trigger_homelink": {
+            "function": "trigger_homelink",
+            "endpoint": "POST /api/1/vehicles/{id}/command/trigger_homelink",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "lat",
+                    "in": "body",
+                    "type": "Unknown",
+                    "required": "Yes"
+                },
+                {
+                    "name": "lon",
+                    "in": "body",
+                    "type": "Unknown",
+                    "required": "Yes"
+                },
+                {
+                    "name": "token",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "update_calendar_entries": {
+            "function": "update_calendar_entries",
+            "endpoint": "POST /api/1/vehicles/{id}/command/update_calendar_entries",
+            "scopes": "",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "calendar_data",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "window_control": {
+            "function": "window_control",
+            "endpoint": "POST /api/1/vehicles/{id}/command/window_control",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "lat",
+                    "in": "body",
+                    "type": "Unknown",
+                    "required": "Yes"
+                },
+                {
+                    "name": "lon",
+                    "in": "body",
+                    "type": "Unknown",
+                    "required": "Yes"
+                },
+                {
+                    "name": "command",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        }
+    },
+    "Vehicle Endpoints": {
+        "list": {
+            "function": "list",
+            "endpoint": "GET /api/1/vehicles",
+            "scopes": "vehicle_device_data",
+            "parameters": [
+                {
+                    "name": "page",
+                    "in": "query",
+                    "type": "integer",
+                    "required": "No"
+                },
+                {
+                    "name": "per_page",
+                    "in": "query",
+                    "type": "integer",
+                    "required": "No"
+                }
+            ]
+        },
+        "mobile_enabled": {
+            "function": "mobile_enabled",
+            "endpoint": "GET /api/1/vehicles/{id}/mobile_enabled",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "nearby_charging_sites": {
+            "function": "nearby_charging_sites",
+            "endpoint": "GET /api/1/vehicles/{id}/nearby_charging_sites",
+            "scopes": "vehicle_device_data",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "count",
+                    "in": "query",
+                    "type": "integer",
+                    "required": "No"
+                },
+                {
+                    "name": "radius",
+                    "in": "query",
+                    "type": "integer",
+                    "required": "No"
+                },
+                {
+                    "name": "detail",
+                    "in": "query",
+                    "type": "boolean",
+                    "required": "No"
+                }
+            ]
+        },
+        "recent_alerts": {
+            "function": "recent_alerts",
+            "endpoint": "GET /api/1/vehicles/{id}/recent_alerts",
+            "scopes": "vehicle_device_data",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "service_data": {
+            "function": "service_data",
+            "endpoint": "GET /api/1/vehicles/{id}/service_data",
+            "scopes": "vehicle_device_data",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "share_invites": {
+            "function": "share_invites",
+            "endpoint": "GET /api/1/vehicles/{vehicle_id}/invitations",
+            "scopes": "vehicle_device_data",
+            "parameters": [
+                {
+                    "name": "vehicle_id",
+                    "in": "path",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "share_invites create": {
+            "function": "share_invites create",
+            "endpoint": "POST /api/1/vehicles/{vehicle_id}/invitations",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "vehicle_id",
+                    "in": "path",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "share_invites revoke": {
+            "function": "share_invites revoke",
+            "endpoint": "POST /api/1/vehicles/{vehicle_id}/invitations/{id}/revoke",
+            "scopes": "vehicle_cmds",
+            "parameters": [
+                {
+                    "name": "vehicle_id",
+                    "in": "path",
+                    "type": "string",
+                    "required": "Yes"
+                },
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "signed_command": {
+            "function": "signed_command",
+            "endpoint": "POST /api/1/vehicles/{id}/signed_command",
+            "scopes": "vehicle_cmds, vehicle_charging_cmds, vehicle_device_data",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "routable_message",
+                    "in": "body",
+                    "type": "string",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "subscriptions": {
+            "function": "subscriptions",
+            "endpoint": "GET /api/1/subscriptions",
+            "scopes": "user_data",
+            "parameters": [
+                {
+                    "name": "device_token",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "device_type",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                }
+            ]
+        },
+        "subscriptions set": {
+            "function": "subscriptions set",
+            "endpoint": "POST /api/1/subscriptions",
+            "scopes": "user_data",
+            "parameters": [
+                {
+                    "name": "device_token",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "device_type",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                }
+            ]
+        },
+        "vehicle": {
+            "function": "vehicle",
+            "endpoint": "GET /api/1/vehicles/{id}",
+            "scopes": "vehicle_device_data",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "vehicle_data": {
+            "function": "vehicle_data",
+            "endpoint": "GET /api/1/vehicles/{id}/vehicle_data",
+            "scopes": "vehicle_device_data",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                },
+                {
+                    "name": "endpoints",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                }
+            ]
+        },
+        "vehicle_subscriptions": {
+            "function": "vehicle_subscriptions",
+            "endpoint": "GET /api/1/vehicle_subscriptions",
+            "scopes": "user_data",
+            "parameters": [
+                {
+                    "name": "device_token",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "device_type",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                }
+            ]
+        },
+        "vehicle_subscriptions set": {
+            "function": "vehicle_subscriptions set",
+            "endpoint": "POST /api/1/vehicle_subscriptions",
+            "scopes": "user_data",
+            "parameters": [
+                {
+                    "name": "device_token",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                },
+                {
+                    "name": "device_type",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                }
+            ]
+        },
+        "wake_up": {
+            "function": "wake_up",
+            "endpoint": "POST /api/1/vehicles/{id}/wake_up",
+            "scopes": "vehicle_device_data",
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "integer",
+                    "required": "Yes"
+                }
+            ]
+        },
+        "warranty_details": {
+            "function": "warranty_details",
+            "endpoint": "GET /api/1/dx/warranty/details",
+            "scopes": "vehicle_device_data",
+            "parameters": [
+                {
+                    "name": "vin",
+                    "in": "query",
+                    "type": "string",
+                    "required": "No"
+                }
+            ]
+        }
+    },
+    "FAQ": {}
+}
