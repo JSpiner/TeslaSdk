@@ -5,7 +5,7 @@ This is an unofficial project that implements the official Tesla SDK into multip
 
 | Language/Platform | http api | ble api | docs |
 | -- | -- | -- | -- |
-| python | in progress | ✅ | [docs](./python/README.md) |
+| python | ✅ | ❌ | [docs](./python/README.md) |
 | js | planning | ❌ | |
 | kotlin / Android | planning | planning | |
 | swift / iOS | need contribute | need contribute | |
