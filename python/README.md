@@ -6,7 +6,7 @@ This project has not yet been deployed.
 ### Usage
 Http api client
 ```python
-from client.web.web_client import WebClient
+from tesla_sdk.client.web.web_client import WebClient
 
 client = WebClient("YOUR_AUTH_KEY")
 response = client.vehicles.list(1, 10)

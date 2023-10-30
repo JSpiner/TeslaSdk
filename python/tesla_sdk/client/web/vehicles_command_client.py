@@ -1,4 +1,4 @@
-from client.web.base_web_client import BaseWebClient
+from tesla_sdk.client.web.base_web_client import BaseWebClient
 
 
 class VehiclesCommandClient(BaseWebClient):

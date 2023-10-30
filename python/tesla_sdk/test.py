@@ -1,4 +1,4 @@
-from client.web.web_client import WebClient
+from tesla_sdk.client.web.web_client import WebClient
 import json
 
 with open("test_key.json", "r") as st_json:

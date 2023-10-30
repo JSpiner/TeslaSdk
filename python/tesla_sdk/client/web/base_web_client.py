@@ -1,5 +1,4 @@
-
-from client.base_client import BaseClient
+from tesla_sdk.client.base_client import BaseClient
 import requests
 
 
