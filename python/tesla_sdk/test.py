@@ -7,5 +7,4 @@ with open("test_key.json", "r") as st_json:
     client = WebClient(keyJson['auth_token'])
     response = client.vehicles.list(1, 10)
 
-    print(response.status_code)
-    print(response.text)
+    print(response)

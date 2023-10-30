@@ -17,22 +17,22 @@ class BaseWebClient(BaseClient):
     def httpGet(self, path, params=None, **kwargs):
         return requests.get(
             self.base_url + path,
-            params=params,
+            params={k: v for k, v in params.items() if v is not None},
             headers={
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + self.auth_token
             },
             **kwargs
-        )
+        ).json()
 
-    def httpPost(self, path, data=None, json=None, **kwargs):
+    def httpPost(self, path, params=None, json=None, **kwargs):
         return requests.post(
             self.base_url + path,
-            data=data,
+            params={k: v for k, v in params.items() if v is not None},
             json=json,
             headers={
                 "Content-Type": "application/json",
                 "Authorization": "Bearer " + self.auth_token
             }
             ** kwargs
-        )
+        ).json()
